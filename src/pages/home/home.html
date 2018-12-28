@@ -1,17 +1,33 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Home</ion-title>
+    <ion-title>Playlists</ion-title>
   </ion-navbar>
+  <ion-fab top right >
+      <button (click)="abreForm()" ion-fab mini><ion-icon name="add"></ion-icon></button>
+  </ion-fab>  
 </ion-header>
 
 <ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+    <ion-list>
+        <ion-item-sliding *ngFor="let playlist of playlists">
+          <ion-item>
+            <h2>{{playlist.nome}}</h2>
+            <p>{{playlist.descricao}}</p>
+          </ion-item>
+          <ion-item-options side="right">
+            <button (click)="abreMusicas(playlist)" ion-button color="primary">
+              <ion-icon name="list"></ion-icon>
+              Detalhe
+            </button>
+            <button (click)="abreEditarPlaylist(playlist)" ion-button color="secondary">
+              <ion-icon name="create"></ion-icon>
+              Editar
+            </button>
+            <button (click)="deletaPlaylist(playlist.id)" ion-button color="danger">
+                <ion-icon name="trash"></ion-icon>
+                Apagar
+              </button>
+          </ion-item-options>
+        </ion-item-sliding>
+      </ion-list>
 </ion-content>

@@ -1,0 +1,37 @@
+<!--
+  Generated template for the MusicaPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Playlist {{playlist.nome}}</ion-title>
+  </ion-navbar>
+  <ion-fab top right >
+      <button (click)="abreForm()" ion-fab mini><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+</ion-header>
+
+<ion-content padding>
+    <ion-list>
+        <ion-item-sliding *ngFor="let musica of playlist.musicas" >
+          <ion-item>
+            <h2>{{musica.titulo}}</h2>
+            <p>Banda: {{musica.banda}}</p>
+            <p>Nota: {{musica.nota}}</p>
+          </ion-item>
+          <ion-item-options side="right">
+            <button (click)="abreEditarMusica(musica)" ion-button color="secondary">
+              <ion-icon name="create"></ion-icon>
+              Editar
+            </button>
+            <button (click)="deletaMusica(playlist.id, musica.id)" ion-button color="danger">
+                <ion-icon name="trash"></ion-icon>
+                Apagar
+              </button>
+          </ion-item-options>
+        </ion-item-sliding>
+      </ion-list>
+</ion-content>
