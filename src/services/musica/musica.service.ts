@@ -8,7 +8,7 @@ import { Musica } from "../../models/musica";
 @Injectable()
 export class MusicaService {
 
-    public url = 'http://192.168.100.25:8080//playlists';
+    public url = 'http://localhost:8080//playlists';
     constructor(public http: HttpClient) {
     }
 
